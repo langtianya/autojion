@@ -1,4 +1,4 @@
-package com.wangzhe.action;
+package com.wangzhe.autojoin.core.action;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,34 +28,34 @@ import org.apache.struts2.convention.annotation.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.wangzhe.common.MD5;
-import com.wangzhe.common.Util;
-import com.wangzhe.db.DB;
-import com.wangzhe.model.Account;
-import com.wangzhe.model.AccountMapper;
-import com.wangzhe.model.Auditor;
-import com.wangzhe.model.Refresh;
-import com.wangzhe.model.RefreshMapper;
-import com.wangzhe.model.Status;
-import com.wangzhe.model.Task;
-import com.wangzhe.model.TaskMapper;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.MD5;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.Util;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.db.DB;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Account;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.AccountMapper;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Auditor;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Refresh;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.RefreshMapper;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Status;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Task;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.TaskMapper;
 import com.opensymphony.xwork2.ActionSupport;
 /**
- * Task: Administrator Date: 13-2-28 Time: ÏÂÎç5:39
+ * Task: Administrator Date: 13-2-28 Time: ï¿½ï¿½ï¿½ï¿½5:39
  */
 @Namespace("/")
 
 public class TaskAction  extends BaseAction{
-         // ¶Ô¿Í»§¶ËÌá¹©µÄ½Ó¿ÚÊµÏÖ!
+         // ï¿½Ô¿Í»ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ä½Ó¿ï¿½Êµï¿½ï¿½!
 	 private List<Task> tasks;
 	private int aId;
 	private String opMsg;
     private Task task;
     private List<Task> adSearchResults;
 		
-		// ÐÞ¸ÄÈÎÎñÐÅÏ¢Ò³ÃæÖÐÉóºËÔ±µÄselect list
-// private Auditor[] auditorList = {new Auditor(1, "¹Ù·½"),new Auditor(2, "A´úÀí"),
-// new Auditor(3, "B´úÀí")};
+		// ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½select list
+// private Auditor[] auditorList = {new Auditor(1, "ï¿½Ù·ï¿½"),new Auditor(2, "Aï¿½ï¿½ï¿½ï¿½"),
+// new Auditor(3, "Bï¿½ï¿½ï¿½ï¿½")};
     private List<Auditor> auditorList = null;
     private List<Status> statusList = null;
     public TaskAction(){
@@ -86,7 +86,7 @@ public class TaskAction  extends BaseAction{
 		}
 
 	/**
-	 * ÈÎÎñ×¢²á
+	 * ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -121,7 +121,7 @@ public class TaskAction  extends BaseAction{
 	        }
 	        if(tKeyword==null||tUrl==null||aId==null||tSEType==null||tSetClick==null||!flag)
 	        {
-	        	Util.writeDataToClient("È±ÉÙÌá½»²ÎÊý£¬ÇëÉÔºóÔÙÊÔ£¡");
+	        	Util.writeDataToClient("È±ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô£ï¿½");
 	           	return ;
 	        }
 	        if(tArea.equals(""))
@@ -159,25 +159,25 @@ public class TaskAction  extends BaseAction{
         try {
         	TaskMapper taskMapper = getModelMapper();           
             task = taskMapper.queryByTask2(taskMap);  
-            //ActionÑéÖ¤¼ÇÂ¼ ÊÇ·ñ´æÔÚ Ìí¼Ó¸öÊýÊÇ·ñ³¬¹ýÁËÈ¨ÏÞÉÏÏÞ ¿Í»§¶Ë»á×ö±¾µØÏÞÖÆ£¬·ÀÖ¹Í¨¹ý±íµ¥Ìí¼ÓÈÆ¹ýÈ¨ÏÞÉèÖÃ ¿É¸Ä³ÉÍ¨¹ý¿Í»§¶ËÌá½»Ïà¹Ø²ÎÊýÅÐ¶Ï
-        	// ÅÐ¶ÏÊÇ·ñ´æÔÚ
+            //Actionï¿½ï¿½Ö¤ï¿½ï¿½Â¼ ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ï¿½Ç·ñ³¬¹ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í»ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ö¹Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¹ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É¸Ä³ï¿½Í¨ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+        	// ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
         	if(task!=null){
-             	 Util.writeDataToClient("¸ÃËÑË÷ÒýÇæÀïµÄ¹Ø¼ü´ÊÍøÖ·¶ÔÒÑ¾­Ìá½»¹ýÁË£¬ÇëÈ·±£¼ÇÂ¼ÖÐ¡±¹Ø¼ü´Ê¡¢ÍøÖ·¡¢ËÑË÷ÒýÇæÀàÐÍ¡°²»Ò»Ñù£¡");
+             	 Util.writeDataToClient("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½á½»ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Ð¡ï¿½ï¿½Ø¼ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½");
              	 return ;
         	}       
-        	// ÅÐ¶ÏÌí¼Ó¸öÊýÊÇ·ñ³¬¹ýÁËÈ¨ÏÞÉÏÏÞ
+        	// ï¿½Ð¶ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ï¿½Ç·ñ³¬¹ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         	try {
         		
             AccountMapper accoutMapper = AccountAction.getModelMapper();
             Account account=accoutMapper.getAccountById(aId);
             int Status=account.getAStatus();          
-            // Ãâ·ÑÓÃ»§Ö»¿ÉÒÔÌí¼ÓÒ»¸ö¹Ø¼ü´Ê
+            // ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
             if(Status==0){
             	Status=1;
             }
             int haveCount=getModelMapper().getCountByTask(task);
             if(Status==haveCount){
-            	Util.writeDataToClient("¶Ô²»Æð£¬ÄúµÄÈ¨ÏÞÖ»ÄÜÌí¼Ó"+haveCount+"¸öÈÎÎñ¡£");
+            	Util.writeDataToClient("ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½"+haveCount+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
            	    return ;
             }
         	}
@@ -186,7 +186,7 @@ public class TaskAction  extends BaseAction{
  	        }       	
             taskMapper.insert(taskMap);
             
-            //Ìí¼Óµ½ÈÎÎñ³Ø
+            //ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             task = taskMapper.queryByTask(taskMap);  
             if(task!=null)
             {           
@@ -195,9 +195,9 @@ public class TaskAction  extends BaseAction{
             }
             else
             {
-            	//System.out.println("ÐÂÌí¼ÓµÄÈÎÎñ,Ìí¼Óµ½ÈÎÎñ³ØÊ§°Ü£¡");
+            	//System.out.println("ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½");
             }
-            Util.writeDataToClient("Ìí¼Ó³É¹¦£¡");         
+            Util.writeDataToClient("ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");         
             
         } finally {
         	closeSqlSession();
@@ -206,7 +206,7 @@ public class TaskAction  extends BaseAction{
 	    }
 	    
 	    /**
-		 * ÈÎÎñµÇÂ¼
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		 * 
 		 * @return
 		 */
@@ -240,19 +240,19 @@ public class TaskAction  extends BaseAction{
 				}
 				
 				if (i > 0) {
-					//System.out.println("³É¹¦"+i);
+					//System.out.println("ï¿½É¹ï¿½"+i);
 					return "success";
 				}
 
 			}
 			ServletActionContext.getRequest().getSession().setAttribute("msg",
-					"µÇÂ¼Ê§°Ü!");
-			//System.out.println("Ê§°Ü");
+					"ï¿½ï¿½Â¼Ê§ï¿½ï¿½!");
+			//System.out.println("Ê§ï¿½ï¿½");
 			return "error";
 		}
 	    
 	    /**
-		 * É¾³ýÈÎÎñ
+		 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 * 
 		 * @return
 		 */
@@ -277,11 +277,11 @@ public class TaskAction  extends BaseAction{
 					taskMap.put("tId", task.getTId());
 				taskMapper.deleteByTask(taskMap);
 				}else{
-					 Util.writeDataToClient("¶Ô²»Æð£¬ÔÆ¶ËÃ»ÓÐ¸ÃÈÎÎñÐÅÏ¢");
+					 Util.writeDataToClient("ï¿½Ô²ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ã»ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢");
 					return "error";
 				}
 				
-				// ²éÑ¯£¬¿´ÊÇ·ñÉ¾³ý³É¹¦
+				// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½É¾ï¿½ï¿½ï¿½É¹ï¿½
 				task=taskMapper.queryByTask(taskMap);			
 			if(task==null){
 				
@@ -292,7 +292,7 @@ public class TaskAction  extends BaseAction{
 				   if(isSuccess!=null&&isSuccess=="success"){
 					sqlSession.commit();
 					delTaskFromPool(taskMap);
-				     Util.writeDataToClient("É¾³ýÈÎÎñ³É¹¦");
+				     Util.writeDataToClient("É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½");
 				     return "success";
 					}else{
 						sqlSession.rollback();
@@ -317,7 +317,7 @@ public class TaskAction  extends BaseAction{
 		}
 		
 		 /**
-			 * É¾³ýÈÎÎñÁÐ±í
+			 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 			 * 
 			 * @return
 			 */
@@ -333,7 +333,7 @@ public class TaskAction  extends BaseAction{
 		try {
 			TaskMapper taskMapper = getModelMapper();
 
-		// ÏÂÃæÁ½¸öÑ­»·ÄÚÊÇ½âÎöjsion¸ñÊ½Êý¾Ý£¬²¢¸ù¾Ý½âÎöµÄÊý¾Ý²éÑ¯Êý¾Ý¿â
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½jsionï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½Ñ¯ï¿½ï¿½ï¿½Ý¿ï¿½
 		String[][] records = Util.getPatternValuesArray(jsionStr,"\"(\\d+)\":\\{(.*?)\\},", 2);
 		for (int i = 0; i < records.length; i++) {
 			if (records[i][0] == null || records[i][1] == null) {
@@ -353,12 +353,12 @@ public class TaskAction  extends BaseAction{
 		} finally {
 			closeSqlSession();
 		}
-		Util.writeDataToClient("É¾³ýÈÎÎñ³É¹¦");
+		Util.writeDataToClient("É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½");
 		return "success";
 	}
 		
 		 /**
-			 * ÐÞ¸ÄÈÎÎñ
+			 * ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½
 			 * 
 			 * @return
 			 */
@@ -396,13 +396,13 @@ public class TaskAction  extends BaseAction{
         } finally {
         	closeSqlSession();
         }
-        String msg="¸üÐÂ³É¹¦";
+        String msg="ï¿½ï¿½ï¿½Â³É¹ï¿½";
         Util.writeDataToClient(msg);
 		return "success";
 		}
 		
 		 /**
-			 * ÐÞ¸Ä¸ù¾ÝÈÎÎñ¶ÔÏóÈÎÎñ
+			 * ï¿½Þ¸Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			 * 
 			 * @return
 			 */
@@ -428,7 +428,7 @@ public class TaskAction  extends BaseAction{
         	closeSqlSession();
         }
         InterfaceAction.updateTaskpools(task);
-        String msg="¸üÐÂ³É¹¦";
+        String msg="ï¿½ï¿½ï¿½Â³É¹ï¿½";
         Util.writeDataToClient(msg);
         InterfaceAction.updateTaskToPool(task);
 		return "success";
@@ -453,7 +453,7 @@ public class TaskAction  extends BaseAction{
 		try {
 			TaskMapper taskMapper = getModelMapper();
 			
-			// ÏÂÃæÁ½¸öÑ­»·ÄÚÊÇ½âÎöjsion¸ñÊ½Êý¾Ý£¬²¢¸ù¾Ý½âÎöµÄÊý¾Ý²éÑ¯Êý¾Ý¿â
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½jsionï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½Ñ¯ï¿½ï¿½ï¿½Ý¿ï¿½
 			String[][] records = Util.getPatternValuesArray(jsionStr,"\"(\\d+)\":\\{(.*?)\\},", 2);
 			for (int i = 0; i < records.length; i++) {
 				if (records[i][0] == null || records[i][1] == null) {
@@ -488,7 +488,7 @@ public class TaskAction  extends BaseAction{
 		}else
 		if (refreshMap != null) {
 			List<String> opMsg=new ArrayList<String>();
-			opMsg.add("¸Ã¹Ø¼ü´ÊÍøÖ·¶ÔÃ»ÓÐÔÆµã»÷¼ÇÂ¼!");
+			opMsg.add("ï¿½Ã¹Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Â¼!");
 			refreshMap.put("opMsg",opMsg);
 			writeMapToClient(refreshMap);
 		}
@@ -545,7 +545,7 @@ public class TaskAction  extends BaseAction{
 			
 			 String dataLenth = request.getHeader("Content-Length");
 		     final int len = dataLenth == null ? 0 : Integer.parseInt(dataLenth);
-		     // ÕâÀïÈç¹û·µ»Ø³¤¶ÈÎª0£¬±íÊ¾·þÎñÆ÷·±Ã¦ÖÐ
+		     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¦ï¿½ï¿½
 		     if (len == 0) {
 		         return "error";
 		     }
@@ -569,7 +569,7 @@ public class TaskAction  extends BaseAction{
 		}
 		
 		 /**
-			 * ¸ù¾ÝÈÎÎñid²éÑ¯µ¥¸öÈÎÎñÐÅÏ¢
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			 * 
 			 * @return
 			 */
@@ -600,7 +600,7 @@ public class TaskAction  extends BaseAction{
         } finally {
         	closeSqlSession();
         }
-        String msg="³É¹¦";
+        String msg="ï¿½É¹ï¿½";
         Util.writeDataToClient(msg);
 		return "success";
 		}
@@ -611,7 +611,7 @@ public class TaskAction  extends BaseAction{
 		}
 
 		/**
-		 * ´ÓÊý¾Ý¿â²éÑ¯ËùÓÐ
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 		 * 
 		 * @return
 		 */
@@ -637,7 +637,7 @@ public class TaskAction  extends BaseAction{
 		}
 		
 		/**
-		 * ÈÎÎñ¸ß¼¶ËÑË÷
+		 * ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		 * 
 		 * @return
 		 */
@@ -648,9 +648,9 @@ public class TaskAction  extends BaseAction{
 
 			try {
 // if(task!=null){
-// System.out.println("ÈÎÎñ¸ß¼¶ËÑË÷ÊäÈë::"+task.getAName());
-// System.out.println("ÈÎÎñ¸ß¼¶ËÑË÷ÊäÈë::"+task.getAPhone());
-// System.out.println("ÈÎÎñ¸ß¼¶ËÑË÷ÊäÈë::"+task.getAStatus());
+// System.out.println("ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½::"+task.getAName());
+// System.out.println("ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½::"+task.getAPhone());
+// System.out.println("ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½::"+task.getAStatus());
 // task.setAStatus(null);
 // }
 // TaskMapper taskMapper = getModelMapper();
@@ -710,7 +710,7 @@ public class TaskAction  extends BaseAction{
 			TaskMapper taskMapper = ua.getModelMapper();
 // Task task=taskMapper.getTaskById("1");
 // if (task!=null) {
-// // task.setAName("ÐÞ¸Ä2");
+// // task.setAName("ï¿½Þ¸ï¿½2");
 // ua.setTask(task);
 // // ua.editOneTaskById();
 //				
@@ -723,7 +723,7 @@ public class TaskAction  extends BaseAction{
 					int randomInt2 = Util.getRandomInt(2);
 					
 			Task task = new Task();
-	        task.setTKeyword(randomInt2==1?"ÍøÒ×Íø":"ÐÂÀËÎ¢²©");
+	        task.setTKeyword(randomInt2==1?"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½":"ï¿½ï¿½ï¿½ï¿½Î¢ï¿½ï¿½");
 	        task.setTUrl(randomInt2==1?"www.163.com":"www.weibo.com");
 	        task.setTSEType(randomInt2==1?"Google Hk":"Baidu");
 	        task.setTSetClick(randomInt4);
@@ -732,7 +732,7 @@ public class TaskAction  extends BaseAction{
 	        task.setTDate(new java.sql.Date(new Date().getTime()));
 	        task.setAId(randomInt4+"");
 	        task.setActivated(randomInt2==1?true:false);
-	       // System.out.println("Ìí¼Ó³É¹¦ÓÃ»§"+i);
+	       // System.out.println("ï¿½ï¿½Ó³É¹ï¿½ï¿½Ã»ï¿½"+i);
 // taskMapper.insert(task);
 			 }
 		}

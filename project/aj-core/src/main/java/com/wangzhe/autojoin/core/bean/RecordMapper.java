@@ -1,4 +1,4 @@
-package com.wangzhe.model;
+package com.wangzhe.autojoin.core.model;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * User: Administrator
  * Date: 13-3-12
- * Time: ÏÂÎç4:46
+ * Time: ï¿½ï¿½ï¿½ï¿½4:46
  */
 public interface RecordMapper {
 
@@ -15,17 +15,17 @@ public interface RecordMapper {
 
     public void editByRId(Record record);
 
-    public Record getRecordByRId(String rId);     //¶©µ¥ID
+    public Record getRecordByRId(String rId);     //ï¿½ï¿½ï¿½ï¿½ID
 
-    public List<Record> getRecordByAId(Map<String, Object> map);  //ÓÃ»§ID
+    public List<Record> getRecordByAId(Map<String, Object> map);  //ï¿½Ã»ï¿½ID
 
     public Integer getRecordByAIdSize(String aId);
 
-    public List<Record> getRecordByUId(Map<String, Object> map);    //²Ù×÷ÈË       ËùÊô´úÀíÉÌ
+    public List<Record> getRecordByUId(Map<String, Object> map);    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½       ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     public Integer getRecordByUIdSize(String uId);
 
-    public List<Record> getRecordByAName(Map<String, Object> map);    //¸ù¾ÝÓÃ»§Ãû
+    public List<Record> getRecordByAName(Map<String, Object> map);    //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
 
     public Integer getRecordByANameSize(String aName);
 

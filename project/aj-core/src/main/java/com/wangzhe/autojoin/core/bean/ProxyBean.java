@@ -1,4 +1,4 @@
-package com.wangzhe.model;
+package com.wangzhe.autojoin.core.model;
 
 /**
  *

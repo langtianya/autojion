@@ -1,4 +1,4 @@
-package com.wangzhe.model;
+package com.wangzhe.autojoin.core.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Refresh: Administrator
  * Date: 13-2-26
- * Time: обнГ4:59
+ * Time: О©╫О©╫О©╫О©╫4:59
  */
 public interface RefreshMapper {
 

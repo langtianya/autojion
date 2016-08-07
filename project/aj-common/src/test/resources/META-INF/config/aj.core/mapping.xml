@@ -15,6 +15,5 @@
 			<column name="test" length="150" />
 		</property>
 	</class>
-	
-</class>
+
 </hibernate-mapping>

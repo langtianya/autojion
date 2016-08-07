@@ -1,4 +1,4 @@
-package com.wangzhe.model;
+package com.wangzhe.autojoin.core.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Task: Administrator
  * Date: 13-2-26
- * Time: ÏÂÎç4:59
+ * Time: ï¿½ï¿½ï¿½ï¿½4:59
  */
 public interface TaskMapper {
 
@@ -29,7 +29,7 @@ public interface TaskMapper {
     public Integer deleteByTask(Map<String, Object> map);
 
     
-    /**¸üÐÂµ¥¸öÓÃ»§ÐÅÏ¢*/
+    /**ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢*/
     public void update(Task task);
     
     public Task queryByTask(Map<String, Object> map);

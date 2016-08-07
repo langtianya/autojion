@@ -1,4 +1,4 @@
-package com.wangzhe.model;
+package com.wangzhe.autojoin.core.model;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -7,22 +7,22 @@ import java.sql.Timestamp;
 /**
  * User: Administrator
  * Date: 13-3-11
- * Time: ÏÂÎç4:45
+ * Time: ï¿½ï¿½ï¿½ï¿½4:45
  */
 public class Record implements Serializable {
 
 
     private String rId;
 
-    private String aId;    //ÓÃ»§ID
+    private String aId;    //ï¿½Ã»ï¿½ID
     private String aName;
     private String uName;
     private String uAgent;
-    private String uId;   //²Ù×÷ÈË
+    private String uId;   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private String uuId;
-    private String rClick;//µãÊý
-    private String rMoney;//½ð¶î
-    private Timestamp rDate;   //ÈÕÆÚ
+    private String rClick;//ï¿½ï¿½ï¿½ï¿½
+    private String rMoney;//ï¿½ï¿½ï¿½
+    private Timestamp rDate;   //ï¿½ï¿½ï¿½ï¿½
 //    public String getUUid(){
 //        return uuId;
 //    }

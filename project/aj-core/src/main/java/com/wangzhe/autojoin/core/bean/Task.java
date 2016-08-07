@@ -1,4 +1,4 @@
-package com.wangzhe.model;
+package com.wangzhe.autojoin.core.model;
 
 import java.util.Hashtable;
 
@@ -8,18 +8,18 @@ import java.util.Hashtable;
  * Purpose: Defines the Class Task
  ***********************************************************************/
 
-//Óë·þÎñ¶ËÍ¬²½µÄ¶ÔÏóÀàÐÍ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class Task implements java.io.Serializable {
 	private long tId;
-	private String aId; //ÓÃ»§ID
-	private java.lang.String tKeyword; //¹Ø¼ü´Ê
-	private java.lang.String tUrl; //ÍøÖ·
-	private java.lang.String tSEType; //ËÑË÷ÒýÇæÀàÐÍ
-	private int tSetClick; //Éè¶¨µã»÷´ÎÊý
-	private int tAssignedClick; //ÒÑ¾­·ÖÅäµÄµã»÷´ÎÊý
-	private int tHaveClick; //Ô¤Éèµã»÷´ÎÊý
+	private String aId; //ï¿½Ã»ï¿½ID
+	private java.lang.String tKeyword; //ï¿½Ø¼ï¿½ï¿½ï¿½
+	private java.lang.String tUrl; //ï¿½ï¿½Ö·
+	private java.lang.String tSEType; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int tSetClick; //ï¿½è¶¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int tAssignedClick; //ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int tHaveClick; //Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private java.sql.Date tDate;
-	private boolean activated; //¼¤»î×´Ì¬
+	private boolean activated; //ï¿½ï¿½ï¿½ï¿½×´Ì¬
 	private String tTime;
 	private String tArea;
 	public Hashtable<Integer,Integer> timeCount=new Hashtable<Integer,Integer>();

@@ -1,4 +1,4 @@
-package com.wangzhe.model;
+package com.wangzhe.autojoin.core.model;
 
 import java.sql.Timestamp;
 
@@ -9,20 +9,20 @@ import java.sql.Timestamp;
  * Purpose: Defines the Class Refresh
  * *********************************************************************
  */
-//Óë¿Í»§¶ËÍ¬²½µÄ¶ÔÏóÀàÐÍ£¬¿Í»§¶ËÐÞ¸ÄÁË·þÎñ¶Ë±ØÐëÐÞ¸Ä£¬Ïà·´Ò²Ò»Ñù
+//ï¿½ï¿½Í»ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½Ë·ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½Þ¸Ä£ï¿½ï¿½à·´Ò²Ò»ï¿½ï¿½
 
 public class Refresh implements java.io.Serializable{
     private long rId;
     ///////////
-    private long tId;         //ÈÎÎñËùÊôID
-    private java.lang.String rKeyword;   //¹Ø¼ü´Ê
-    private java.lang.String rUrl;   //ÍøÖ·
-    private java.lang.String rSEType;  //ËÑË÷ÒýÇæÀàÐÍ
-    ///////////         ÕâÀï¼¸¸ö×Ö¶Î Ã²ËÆ ÈÎÎñ±í Àï¶¼ÓÐÁË!
-    private java.lang.String rIp;          //Ë¢ÐÂIP
-    private Timestamp rDate;          //Ë¢ÐÂÈÕÆÚ
+    private long tId;         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+    private java.lang.String rKeyword;   //ï¿½Ø¼ï¿½ï¿½ï¿½
+    private java.lang.String rUrl;   //ï¿½ï¿½Ö·
+    private java.lang.String rSEType;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    ///////////         ï¿½ï¿½ï¿½ï¼¸ï¿½ï¿½ï¿½Ö¶ï¿½ Ã²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¶¼ï¿½ï¿½ï¿½ï¿½!
+    private java.lang.String rIp;          //Ë¢ï¿½ï¿½IP
+    private Timestamp rDate;          //Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private java.util.Date endDate; //
-    private java.lang.String tarea; //Ë¢ÐÂµØÇø
+    private java.lang.String tarea; //Ë¢ï¿½Âµï¿½ï¿½ï¿½
 
     public long getRId() {
         return rId;

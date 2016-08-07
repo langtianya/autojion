@@ -1,9 +1,9 @@
-package com.wangzhe.action;
+package com.wangzhe.autojoin.core.action;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-import com.wangzhe.common.Util;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.Util;
 
 public class TimeThread extends Thread {
 
@@ -12,7 +12,7 @@ public class TimeThread extends Thread {
 	{
 		int count = 0;
 		while (true) {
-			// 10·ÖÖÓ¶Ô±ÈÒ»´ÎÈÕÆÚ 1·ÖÖÓ¼ì²âÒ»´ÎÔÚÏß×´Ì¬
+			// 10ï¿½ï¿½ï¿½Ó¶Ô±ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
 			try {
 				Thread.sleep(1000);
 				count++;
@@ -20,10 +20,10 @@ public class TimeThread extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			// ¶Ô±ÈÈÕÆÚ
+			// ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½
 			if (count > 0 && count % 600 == 0) {
 				
-				System.out.println("¶Ô±ÈÈÕÆÚÈÎÎñ¿ªÊ¼");
+				System.out.println("ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼");
 				String time = Util.getTime();
 				int p0 = time.indexOf(" ");
 				int p2 = time.lastIndexOf("-");
@@ -33,7 +33,7 @@ public class TimeThread extends Thread {
 				int p3 = InterfaceAction.time_yesterday.lastIndexOf("-");
 				String timeold = InterfaceAction.time_yesterday
 						.substring(p3 + 1, p1);
-				System.out.println("³õÊ¼Ê±¼ä:"+timeold+" µ±Ç°Ê±¼ä:"+timenow);
+				System.out.println("ï¿½ï¿½Ê¼Ê±ï¿½ï¿½:"+timeold+" ï¿½ï¿½Ç°Ê±ï¿½ï¿½:"+timenow);
 				if (!timeold.equals(timenow)) {
 					InterfaceAction.time_yesterday = time;
 					for (String type : InterfaceAction.TYPES) {
@@ -42,29 +42,29 @@ public class TimeThread extends Thread {
 					InterfaceAction.initClicks("");
 					InterfaceAction.clickedpools.clear();
 					
-					System.out.println("¸ù¾ÝÈÕÆÚ¸üÐÂÇå¿ÕÈÎÎñ³Ø³É¹¦");
+					System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø³É¹ï¿½");
 				}
 				if(timenow!=null&&timenow.equals("14")||timenow.equals("28")){
 					RefreshAction.delNDateAgoRecord(14);
 				}
-				System.out.println("¶Ô±ÈÈÕÆÚÈÎÎñ¿ªÊ¼½áÊø");
+				System.out.println("ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½");
 			}
          
-			// ¼ì²âÔÚÏß×´Ì¬
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
 			if (count > 0 && count % 60 == 0) {
-				System.out.println("¼ì²âÔÚÏß×´Ì¬¿ªÊ¼");
-				System.out.println("µ±Ç°ÔÚÏßÓÃ»§Êý:"+AccountAction.onlineAids.size());
-				System.out.println("µ±Ç°ÈÎÎñ³ØÈÎÎñÊý:"+InterfaceAction.getCountByType(""));
-				System.out.println("µ±Ç°°Ù¶ÈÈÎÎñ³ØÈÎÎñÊý:"+InterfaceAction.getCountByType("Baidu"));
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ê¼");
+				System.out.println("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½:"+AccountAction.onlineAids.size());
+				System.out.println("ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:"+InterfaceAction.getCountByType(""));
+				System.out.println("ï¿½ï¿½Ç°ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:"+InterfaceAction.getCountByType("Baidu"));
 			
 				if (AccountAction.checkoutAids != null
 						&& AccountAction.checkoutAids.size() > 0) {
 					ArrayList<Integer> delAids=new ArrayList<Integer>();
 					for (Integer aid : AccountAction.checkoutAids) {
-						// Èç¹ûÔÚÏßÓÃ»§³ØÃ»ÓÐ¸ÃÓÃ»§£¬ÔòÔÚÓÃ»§³ØÀïÌÞ³ý¸ÃÓÃ»§ ºÍ IP
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ã»ï¿½Ð¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ³ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ ï¿½ï¿½ IP
 						if (!AccountAction.checkonlineAids.contains(aid)) {
 							AccountAction.onlineAids.remove(aid);
-						 //È¥³ýip³Ø¶ÔÓ¦µÄÈÎÎñ
+						 //È¥ï¿½ï¿½ipï¿½Ø¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						 Set keys=AccountAction.ipPools.keySet();
 						 if(keys!=null&&keys.size()>0)
 						 {
@@ -75,19 +75,19 @@ public class TimeThread extends Thread {
 							 if(AccountAction.ipPools.get(s)==aid)
 							 {
 						       AccountAction.ipPools.remove(s);
-						       System.out.println("¼ì²âµ½Uid:"+aid+"ÓÃ»§ÒÑÀëÏß£¬³É¹¦ÔÚIP³ØÍË³ö¸ÃÓÃ»§£¡");
+						       System.out.println("ï¿½ï¿½âµ½Uid:"+aid+"ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½É¹ï¿½ï¿½ï¿½IPï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½");
 						       break;
 							 }
 						   }
 						 }						 
 						 delAids.add(aid);					
-						//ÈÎÎñ³ØÀïÈ¥³ý¸ÃÓÃ»§µÄÈÎÎñ
+						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						InterfaceAction.removeTasksByAid(aid,"");
 						for(String type:InterfaceAction.TYPES)
 						{
 							 InterfaceAction.removeTasksByAid(aid,type);
 						}
-						System.out.println("¼ì²âµ½Uid:"+aid+"ÓÃ»§ÒÑÀëÏß£¬³É¹¦ÔÚÓÃ»§³ØÍË³ö¸ÃÓÃ»§£¡");
+						System.out.println("ï¿½ï¿½âµ½Uid:"+aid+"ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½");
 						
 					 }				
 					 
@@ -105,16 +105,16 @@ public class TimeThread extends Thread {
 				for (Integer aid : keys) {
 					if (!AccountAction.checkonlineAids.contains(aid)) {
 						AccountAction.checkoutAids.add(aid);
-						System.out.println("¼ì²âµ½Uid:"+aid+"ÓÃ»§¿ÉÄÜÒÑÀëÏß£¬¼ÓÈëµ½¼ì²â¹Û²ì³Ø£¡");
+						System.out.println("ï¿½ï¿½âµ½Uid:"+aid+"ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½Û²ï¿½Ø£ï¿½");
 					}
 				}
 
 				AccountAction.checkonlineAids.clear();
-				System.out.println("¼ì²âÔÚÏß×´Ì¬½áÊø");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½");
 
 			}
 			
-			//·þÎñÆ÷Í¬²½¼ì²â
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½
 			
 			
 		}

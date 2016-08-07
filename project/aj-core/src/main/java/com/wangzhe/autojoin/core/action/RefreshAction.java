@@ -1,4 +1,4 @@
-package com.wangzhe.action;
+package com.wangzhe.autojoin.core.action;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -26,33 +26,33 @@ import org.apache.struts2.convention.annotation.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.wangzhe.common.MD5;
-import com.wangzhe.common.Util;
-import com.wangzhe.db.DB;
-import com.wangzhe.model.Auditor;
-import com.wangzhe.model.Refresh;
-import com.wangzhe.model.RefreshMapper;
-import com.wangzhe.model.Status;
-import com.wangzhe.model.Task;
-import com.wangzhe.model.UserMapper;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.MD5;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.Util;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.db.DB;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Auditor;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Refresh;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.RefreshMapper;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Status;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Task;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.UserMapper;
 import com.opensymphony.xwork2.ActionSupport;
 /**
  * Refresh: Administrator
  * Date: 13-2-28
- * Time: ÏÂÎç5:39
+ * Time: ï¿½ï¿½ï¿½ï¿½5:39
  */
 @Namespace("/")
 public class RefreshAction extends BaseAction{
 	
-         //¶Ô¿Í»§¶ËÌá¹©µÄ½Ó¿ÚÊµÏÖ!
+         //ï¿½Ô¿Í»ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ä½Ó¿ï¿½Êµï¿½ï¿½!
 	 private List<Refresh> refreshs;
 	private int aId;
 	private String opMsg;
     private Refresh refresh;
     private List<Refresh> adSearchResults;
 		
-		//ÐÞ¸ÄÓÃ»§ÐÅÏ¢Ò³ÃæÖÐÉóºËÔ±µÄselect list
-//    private Auditor[] auditorList = {new Auditor(1, "¹Ù·½"),new Auditor(2, "A´úÀí"), new Auditor(3, "B´úÀí")};
+		//ï¿½Þ¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½select list
+//    private Auditor[] auditorList = {new Auditor(1, "ï¿½Ù·ï¿½"),new Auditor(2, "Aï¿½ï¿½ï¿½ï¿½"), new Auditor(3, "Bï¿½ï¿½ï¿½ï¿½")};
     private List<Auditor> auditorList = null;
     private List<Status> statusList = null;
     
@@ -84,7 +84,7 @@ public class RefreshAction extends BaseAction{
 		}
 
 	/**
-	     * Ìí¼ÓË¢ÐÂ¼ÇÂ¼
+	     * ï¿½ï¿½ï¿½Ë¢ï¿½Â¼ï¿½Â¼
 	     * @return
 	     */
 	    @Action(value = "/addRefreshA")
@@ -113,7 +113,7 @@ public class RefreshAction extends BaseAction{
 	          
 	            RefreshMapper refreshMapper = getModelMapper();
 	            refreshMapper.insert(refresh);
-	            //¼ì²éÊÇ·ñÌí¼Ó³É¹¦
+	            //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ó³É¹ï¿½
 	            if(refreshMapper.checkRefresh(refresh)!=0){
 	            	Util.writeDataToClient("add refresh success");
 	      	        return;
@@ -125,7 +125,7 @@ public class RefreshAction extends BaseAction{
 	    }
 
 	    /**
-	     * ÓÃ»§µÇÂ¼
+	     * ï¿½Ã»ï¿½ï¿½ï¿½Â¼
 	     * @return
 	     */
 	    @Action(value = "/refreshLoginA", results = {
@@ -158,14 +158,14 @@ public class RefreshAction extends BaseAction{
 				}
 				
 				if (i > 0) {
-					//System.out.println("³É¹¦"+i);
+					//System.out.println("ï¿½É¹ï¿½"+i);
 					return "success";
 				}
 
 			}
 			ServletActionContext.getRequest().getSession().setAttribute("msg",
-					"µÇÂ¼Ê§°Ü!");
-		//	System.out.println("Ê§°Ü");
+					"ï¿½ï¿½Â¼Ê§ï¿½ï¿½!");
+		//	System.out.println("Ê§ï¿½ï¿½");
 			return "error";
 		}
 	    
@@ -194,8 +194,8 @@ public class RefreshAction extends BaseAction{
 			return "success";
 		}
 		/**
-		 * ×¢Òâ£ºÈÕºóÊ¹ÓÃµÄ»°£¬Õâ¸ö·½·¨Ö»ÓÐµ±ÌìÊ±¼ä´óÓÚµÈÓÚÐÎ²ÎnDateAgo²Å¿ÉÓÃ
-		 * ±ÈÈçÎÒÕâÀïÉèÖÃnDateAgoÎª14£¬µ«ÊÇÎÒÖ»ÓÐÃ¿ÔÂµÄ14ºÍ28ÈÕ²ÅÊ¹ÓÃ¸Ã·½·¨£¬ËùÒÔ14-14=ÉÏ¸öÔÂÄ©£¬28-14µÈÓÚµ±ÔÂ14ºÅ
+		 * ×¢ï¿½â£ºï¿½Õºï¿½Ê¹ï¿½ÃµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ðµï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½Î²ï¿½nDateAgoï¿½Å¿ï¿½ï¿½ï¿½
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nDateAgoÎª14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ã¿ï¿½Âµï¿½14ï¿½ï¿½28ï¿½Õ²ï¿½Ê¹ï¿½Ã¸Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½14-14=ï¿½Ï¸ï¿½ï¿½ï¿½Ä©ï¿½ï¿½28-14ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½14ï¿½ï¿½
 		 * @param nDateAgo
 		 * @return
 		 */
@@ -218,7 +218,7 @@ public class RefreshAction extends BaseAction{
 		
 		
 		 /**
-		 * ¸ù¾ÝÈÎÎñ²éÑ¯¸ÃÈÎÎñµÄË¢ÐÂ¼ÇÂ¼
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â¼ï¿½Â¼
 		 * @return
 		 */
 		public List queryRefreshsByTask(Task task) {
@@ -251,7 +251,7 @@ public class RefreshAction extends BaseAction{
         return null;
 		}
 		/**
-		 * »ñÈ¡nÌìÒÔÇ°µÄÊ±¼ä
+		 * ï¿½ï¿½È¡nï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ê±ï¿½ï¿½
 		 * @param nDate
 		 * @return
 		 */
@@ -270,7 +270,7 @@ public class RefreshAction extends BaseAction{
 		}
 
 		/**
-		 * ´ÓÊý¾Ý¿â²éÑ¯ËùÓÐ
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 		 * 
 		 * @return
 		 */
@@ -296,7 +296,7 @@ public class RefreshAction extends BaseAction{
 		}
 		
 		/**
-		 * ÓÃ»§¸ß¼¶ËÑË÷
+		 * ï¿½Ã»ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		 * 
 		 * @return
 		 */
@@ -307,9 +307,9 @@ public class RefreshAction extends BaseAction{
 
 			try {
 				if(refresh!=null){
-//					 System.out.println("ÓÃ»§¸ß¼¶ËÑË÷ÊäÈë::"+refresh.getAName());
-//					 System.out.println("ÓÃ»§¸ß¼¶ËÑË÷ÊäÈë::"+refresh.getAPhone());
-//					 System.out.println("ÓÃ»§¸ß¼¶ËÑË÷ÊäÈë::"+refresh.getAStatus());
+//					 System.out.println("ï¿½Ã»ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½::"+refresh.getAName());
+//					 System.out.println("ï¿½Ã»ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½::"+refresh.getAPhone());
+//					 System.out.println("ï¿½Ã»ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½::"+refresh.getAStatus());
 //					 refresh.setAStatus(null);
 				}
 				RefreshMapper refreshMapper = getModelMapper();
@@ -368,7 +368,7 @@ public class RefreshAction extends BaseAction{
 //			RefreshMapper refreshMapper = ua.getModelMapper();
 ////			Refresh refresh=refreshMapper.getRefreshById("1");
 ////			if (refresh!=null) {
-//////				refresh.setAName("ÐÞ¸Ä2");
+//////				refresh.setAName("ï¿½Þ¸ï¿½2");
 ////				ua.setRefresh(refresh);
 ////				ua.editOneRefreshById();
 ////			}
@@ -380,32 +380,32 @@ public class RefreshAction extends BaseAction{
 //					
 //					Refresh refresh = new Refresh();
 //							
-//			        refresh.setRKeyword(randomInt2==1?"ÍøÒ×Íø":"ÐÂÀËÎ¢²©");
+//			        refresh.setRKeyword(randomInt2==1?"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½":"ï¿½ï¿½ï¿½ï¿½Î¢ï¿½ï¿½");
 //			        refresh.setRUrl(randomInt2==1?"www.163.com":"www.weibo.com");
 //			        refresh.setRSEType(randomInt2==1?"Google Hk":"Baidu");
 //			        refresh.setRIp("172.0.0.1");
 //			        refresh.setRDate(new java.sql.Date(new Date().getTime()));
 //			        refresh.setTId(Long.valueOf(randomInt4));
-//			        System.out.println("Ìí¼Ó³É¹¦ÓÃ»§"+i);
+//			        System.out.println("ï¿½ï¿½Ó³É¹ï¿½ï¿½Ã»ï¿½"+i);
 //			        refreshMapper.insert(refresh);
 //			 }
 
 //			long endTime=(new Date().getTime()-86400000*15);
 //	     
-//	        System.out.println("Ê®ÎåÌìÇ°£º"+new Date(endTime));
+//	        System.out.println("Ê®ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½"+new Date(endTime));
 			
 			String time = Util.getTime();
 			int p0 = time.indexOf(" ");
 			int p2 = time.lastIndexOf("-");
 			//System.out.println(time+" "+InterfaceAction.time_yesterday);
 			String timenow = time.substring(p2 + 1, p0);
-			//System.out.println("µ±ÔÂÈÕ£º"+timenow);
+			//System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Õ£ï¿½"+timenow);
 			
 			if(timenow!=null&&timenow.equals("14")||timenow.equals("25")){
 				 RefreshAction.delNDateAgoRecord(25);
 				 long endTime=(new Date().getTime()-86400000*26);
-			//	 System.out.println("µ±ÔÂÈÕ£º"+Math.abs(86400000*26));
-				// System.out.println("µ±ÔÂÈÕ£º"+Math.abs(86400000*26));
+			//	 System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Õ£ï¿½"+Math.abs(86400000*26));
+				// System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Õ£ï¿½"+Math.abs(86400000*26));
 			}
 		}
 

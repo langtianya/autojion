@@ -1,8 +1,8 @@
-package com.wangzhe.action;
+package com.wangzhe.autojoin.core.action;
 
-import com.wangzhe.common.BeanFunction;
-import com.wangzhe.db.DB;
-import com.wangzhe.model.*;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.BeanFunction;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.db.DB;
+import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.*;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.beanutils.converters.DateTimeConverter;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * User: Administrator
  * Date: 13-3-14
- * Time: ÏÂÎç5:22
+ * Time: ï¿½ï¿½ï¿½ï¿½5:22
  */
 @Namespace("/")
 public class RecordAction extends ActionSupport {
@@ -51,10 +51,10 @@ public class RecordAction extends ActionSupport {
             if (start == null || !StringUtils.isNumeric(start)) {
                 start = "1";
             }
-            int curPage = 1;   //µ±Ç°ÊÇµÚ¼¸Ò³
-            int maxRowCount = 0;    //Ò»¹²ÓÐ¶àÉÙÐÐ
-            int rowsPerPage = 30; //Ã¿Ò³ÓÐ¶àÉÙÐÐ
-            int maxPage; //Ò»¹²ÓÐ¶àÉÙÒ³
+            int curPage = 1;   //ï¿½ï¿½Ç°ï¿½ÇµÚ¼ï¿½Ò³
+            int maxRowCount = 0;    //Ò»ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
+            int rowsPerPage = 30; //Ã¿Ò³ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
+            int maxPage; //Ò»ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ò³
             try {
                 curPage = Integer.valueOf(start);
             } catch (Exception ex) {
@@ -67,14 +67,14 @@ public class RecordAction extends ActionSupport {
             map.put("start", curPage == 0 ? curPage : ((curPage - 1) * rowsPerPage));
             map.put("limit", rowsPerPage);
             List<Record> records = null;
-            // List<Record> records=sqlSession.selectList("com.wangzhe.model.RecordMapper.getRecordByPage",map);
+            // List<Record> records=sqlSession.selectList("com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.RecordMapper.getRecordByPage",map);
             RecordMapper recordMapper = sqlSession.getMapper(RecordMapper.class);
 //
 //            request.setAttribute("records", records);
 //            System.out.println("aa" + records.size());
 
 
-            //»ñÈ¡µÄ¶©µ¥¼ÇÂ¼
+            //ï¿½ï¿½È¡ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
             String aName = request.getParameter("aName");
             String aId = request.getParameter("aId");
             String rId = request.getParameter("rId");
@@ -85,7 +85,7 @@ public class RecordAction extends ActionSupport {
 
             if (aName != null && aName.trim().length() > 0) {
                 map.put("aName", aName);
-                records = recordMapper.getRecordByAName(map); //sqlSession.selectList("com.wangzhe.model.RecordMapper.getRecordByAName", map);
+                records = recordMapper.getRecordByAName(map); //sqlSession.selectList("com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.RecordMapper.getRecordByAName", map);
                 if (records != null && records.size() > 0) {
                     maxRowCount = recordMapper.getRecordByANameSize(aName);
                 }
@@ -132,14 +132,14 @@ public class RecordAction extends ActionSupport {
 
             }
             if (records == null) {
-                // records = sqlSession.selectList("com.wangzhe.model.RecordMapper.getRecordByAll", map);
+                // records = sqlSession.selectList("com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.RecordMapper.getRecordByAll", map);
                 records = recordMapper.getRecordByAll(map);
                 if (records != null && records.size() > 0) {
                     maxRowCount = recordMapper.getRecordByAllSize();
                 }
             }
             if (records != null && records.size() == 0) {
-                request.setAttribute("msg", "›]ÓÐËÑË÷µ½Äú²éÑ¯µÄÏà¹Ø½á¹û£¡");
+                request.setAttribute("msg", "ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½");
             }
 
             if (records == null) {
@@ -148,7 +148,7 @@ public class RecordAction extends ActionSupport {
             request.setAttribute("records", records);
 
 
-            //¸ù¾Ý×ÜÐÐÊý¼ÆËã×ÜÒ³Êý
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
             if (maxRowCount % rowsPerPage == 0) {
                 maxPage = maxRowCount / rowsPerPage;
             } else {
@@ -202,7 +202,7 @@ public class RecordAction extends ActionSupport {
                 }
             } else {
 
-                request.setAttribute("msg", "Ìá½»ÐÅÏ¢²»ºÏ·¨,¿Í»§ÐÅÏ¢´íÎó!");
+                request.setAttribute("msg", "ï¿½á½»ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï·ï¿½,ï¿½Í»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½!");
                 return "error";
             }
             AccountMapper accountMapper = sqlSession.getMapper(AccountMapper.class);
@@ -213,13 +213,13 @@ public class RecordAction extends ActionSupport {
 
                 record.setAName(account.getAName());
             } else {
-                request.setAttribute("msg", "Ìá½»ÐÅÏ¢²»ºÏ·¨,¿Í»§ÐÅÏ¢´íÎó!");
+                request.setAttribute("msg", "ï¿½á½»ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï·ï¿½,ï¿½Í»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½!");
                 return "error";
             }
 
             String rClick = request.getParameter("rClick");
             if (rClick == null || !StringUtils.isNumeric(rClick)) {
-                request.setAttribute("msg", "Ìá½»ÐÅÏ¢²»ºÏ·¨,µãÊý´íÎó!");
+                request.setAttribute("msg", "ï¿½á½»ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï·ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
                 return "error";
             }
             record.setRClick(rClick);
@@ -229,7 +229,7 @@ public class RecordAction extends ActionSupport {
 
             String rMoney = request.getParameter("rMoney");
             if (rMoney == null || !StringUtils.isNumeric(rMoney)) {
-                request.setAttribute("msg", "Ìá½»ÐÅÏ¢²»ºÏ·¨,Ç®Êý´íÎó!");
+                request.setAttribute("msg", "ï¿½á½»ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï·ï¿½,Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
                 return "error";
             }
             Integer money = 0;
@@ -242,31 +242,31 @@ public class RecordAction extends ActionSupport {
             }
             if (money == null && click == null) {
 
-                request.setAttribute("msg", "²ÎÊý´íÎó!");
+                request.setAttribute("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
                 return "error";
             }
             User user = (User) ServletActionContext.getRequest().getSession().getAttribute("login_");
             if (user != null && user.getUAuth() != null && user.getUAuth().intValue() == 1) {
 
-                //³¬¼¶¹ÜÀíÔ±²»×÷Ð£Ñé
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
             } else {
 
 
                 if (click == 2000 && money < 100) {
-                    request.setAttribute("msg", "Ç®²»¹»!");
+                    request.setAttribute("msg", "Ç®ï¿½ï¿½ï¿½ï¿½!");
                     return "error";
                 } else if (click == 5000 && money < 200) {
-                    request.setAttribute("msg", "Ç®²»¹»!");
+                    request.setAttribute("msg", "Ç®ï¿½ï¿½ï¿½ï¿½!");
                     return "error";
                 } else if (click == 7000 && money < 300) {
-                    request.setAttribute("msg", "Ç®²»¹»!");
+                    request.setAttribute("msg", "Ç®ï¿½ï¿½ï¿½ï¿½!");
                     return "error";
                 } else if (click == 9000 && money < 400) {
-                    request.setAttribute("msg", "Ç®²»¹»!");
+                    request.setAttribute("msg", "Ç®ï¿½ï¿½ï¿½ï¿½!");
                     return "error";
                 } else {
                     if ((click / 20) > money) {
-                        request.setAttribute("msg", "Ç®²»¹»!");
+                        request.setAttribute("msg", "Ç®ï¿½ï¿½ï¿½ï¿½!");
                         return "error";
                     }
                 }
@@ -292,7 +292,7 @@ public class RecordAction extends ActionSupport {
             record.setRMoney(rMoney);
             String uid = request.getParameter("uId");
             if (uid == null || !StringUtils.isNumeric(uid)) {
-                request.setAttribute("msg", "Ìá½»ÐÅÏ¢²»ºÏ·¨,²Ù×÷ÈË´íÎó!");
+                request.setAttribute("msg", "ï¿½á½»ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï·ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½!");
                 return "error";
             }
 
@@ -328,14 +328,14 @@ public class RecordAction extends ActionSupport {
         String rid = request.getParameter("rid");
 
         if (rid == null || !StringUtils.isNumeric(rid)) {
-            request.setAttribute("msg", "Êý¾Ý²»ºÏ·¨!");
+            request.setAttribute("msg", "ï¿½ï¿½ï¿½Ý²ï¿½ï¿½Ï·ï¿½!");
             return "error";
         }
 
         User user = (User) ServletActionContext.getRequest().getSession().getAttribute("login_");
         if (user == null || user.getUAuth() == null || user.getUAuth() != 1) {
 
-            request.setAttribute("msg", "ÄúÎÞÈ¨ÏÞÉ¾³ý¶©µ¥¼ÇÂ¼!");
+            request.setAttribute("msg", "ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼!");
             return "error";
         }
 
@@ -365,25 +365,25 @@ public class RecordAction extends ActionSupport {
         String rid = request.getParameter("rid");
 
         if (rid == null || !StringUtils.isNumeric(rid)) {
-            request.setAttribute("msg", "Êý¾Ý²»ºÏ·¨!");
+            request.setAttribute("msg", "ï¿½ï¿½ï¿½Ý²ï¿½ï¿½Ï·ï¿½!");
             return "error";
         }
         User user = (User) ServletActionContext.getRequest().getSession().getAttribute("login_");
         if (user == null || user.getUAuth() == null || user.getUAuth() != 1) {
 
-            request.setAttribute("msg", "ÄúÎÞÈ¨ÏÞÐÞ¸Ä¶©µ¥¼ÇÂ¼!");
+            request.setAttribute("msg", "ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½Þ¸Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼!");
             return "error";
         }
 
 
         String rClick = request.getParameter("rClick");
         if (rClick == null || !StringUtils.isNumeric(rClick)) {
-            request.setAttribute("msg", "Ìá½»ÐÅÏ¢²»ºÏ·¨,µãÊý´íÎó!");
+            request.setAttribute("msg", "ï¿½á½»ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï·ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
             return "error";
         }
         String rMoney = request.getParameter("rMoney");
         if (rMoney == null || !StringUtils.isNumeric(rMoney)) {
-            request.setAttribute("msg", "Ìá½»ÐÅÏ¢²»ºÏ·¨,Ç®Êý´íÎó!");
+            request.setAttribute("msg", "ï¿½á½»ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ï·ï¿½,Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
             return "error";
         }
         String uuid = request.getParameter("uuId");
@@ -399,7 +399,7 @@ public class RecordAction extends ActionSupport {
         if (money != null && click != null) {
 
             if ((click / 20) > money) {
-                request.setAttribute("msg", "Ç®Ì«ÉÙ!");
+                request.setAttribute("msg", "Ç®Ì«ï¿½ï¿½!");
                 return "error";
             }
         }
@@ -427,7 +427,7 @@ public class RecordAction extends ActionSupport {
                 sqlSession.close();
             }
         }
-        request.setAttribute("msg", "ÐÞ¸Ä³É¹¦!");
+        request.setAttribute("msg", "ï¿½Þ¸Ä³É¹ï¿½!");
         return "success";
     }
 }
