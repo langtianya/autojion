@@ -1,0 +1,24 @@
+apply from : '../webappProject.gradle'
+
+/* 默认依赖所有项目 */
+dependencies {
+	def rootDir = file(rootProject.projectDir.absolutePath + '/project')
+	rootDir.eachDir { dir ->
+	    if (!dir.name.endWiths('-sample') && dir.name != project.projectDir.name) {
+	        compile project(':project:' + dir.name)
+	    }
+	}
+}
+
+
+
+/*需要手动指定依赖关系的web项目，采用下面的格式指定*/
+/*dependencies {
+    compile (
+        project(':project:aj-common'),
+        project(':project:aj-core'),	
+		 project(':project:framework')
+    )
+}
+*/
+

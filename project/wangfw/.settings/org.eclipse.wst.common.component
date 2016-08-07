@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="aj-wangfw">
+        <wb-resource deploy-path="/" source-path="/webapp"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/" source-path="/src/test/resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/resources/META-INF/resources/pc/aj.wangfw"/>
+        <property name="context-root" value=""/>
+        <property name="java-output-path" value="/aj-wangfw/webapp/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,12 @@
+/.settings
+.classpath
+.project
+/bin
+/target
+/lib
+__rzi_0.*
+.jar
+.txt
+*.jar
+*.class
+*.log

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangzhe.model.TaskMapper">
+    <resultMap type="com.wangzhe.model.Task" id="cc_task">
+        <result column="cc_task" property="Task" javaType="com.wangzhe.model.Task"/>
+    </resultMap>
+    
+    <insert id="insert"  parameterType="java.util.Map">
+        insert into cc_task(tKeyword,tUrl,tSEType,tSetClick,tDate,aId,tTime,tArea)
+        values(#{tKeyword},#{tUrl},#{tSEType},#{tSetClick},#{tDate},#{aId},#{tTime},#{tArea})
+          <!-- 这里sql结尾不能加分号，否则报“ORA-00911”的错误 
+	  <selectKey resultClass="int" keyProperty="tId" > 
+	          <![CDATA[
+			SELECT @@IDENTITY AS tId 
+ 	]]>
+	        </selectKey> -->
+    </insert>
+
+    <select id="getTaskByName" resultType="com.wangzhe.model.Task" parameterType="java.lang.String">
+        select * from cc_task where tKeyword=#{tKeyword} 
+    </select>
+    <select id="getTaskById" resultType="com.wangzhe.model.Task" parameterType="java.lang.String">
+        select * from cc_task where tId=#{tId}
+    </select>
+
+    <select id="getTaskId" resultType="java.lang.String" parameterType="java.util.Map">
+        select tId from cc_task where aId=#{aId} and tKeyword=#{tKeyword} and tUrl=#{tUrl} and tSEType=#{tSEType}
+    </select>
+    <select id="getTasksByUserId" resultType="com.wangzhe.model.Task" parameterType="java.lang.Integer">
+        select * from cc_task where aId=#{aId}
+    </select>
+    <select id="getAllTasks" resultType="com.wangzhe.model.Task">
+        select * from cc_task order by tDate DESC limit 1000
+    </select>
+     <delete id="deleteTaskById" parameterType="java.lang.String">
+        delete from cc_task where tId=#{tId}
+    </delete>
+     <delete id="deleteByTask" parameterType="java.util.Map">
+        delete from cc_task where aId=#{aId} and tKeyword=#{tKeyword} and tUrl=#{tUrl} and tSEType=#{tSEType}
+    </delete>
+     <update id="update"  parameterType="com.wangzhe.model.Task" >
+       update cc_task set tSetClick=#{tSetClick} where aId=#{aId} and tKeyword=#{tKeyword} and tUrl=#{tUrl} and tSEType=#{tSEType}
+    </update>
+    
+     <select id="queryByTask"  parameterType="java.util.Map" resultType="com.wangzhe.model.Task">
+       select * from cc_task where aId=#{aId} and tKeyword=#{tKeyword} and tUrl=#{tUrl} and tSEType=#{tSEType}
+    </select>
+    
+    <select id="queryByTask2"  parameterType="java.util.Map" resultType="com.wangzhe.model.Task">
+       select * from cc_task where tKeyword=#{tKeyword} and tUrl=#{tUrl} and tSEType=#{tSEType}
+    </select>
+    <update id="getCountByTask"  parameterType="com.wangzhe.model.Task" >
+       select count(*) from cc_task  where aId=#{aId} and tSEType=#{tSEType}
+    </update>
+</mapper>

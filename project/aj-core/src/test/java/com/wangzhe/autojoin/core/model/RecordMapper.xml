@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangzhe.model.RecordMapper">
+    <resultMap type="com.wangzhe.model.Record" id="cc_record">
+        <result column="cc_record" property="Record" javaType="com.wangzhe.model.Record"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.wangzhe.model.Record">
+        insert into cc_record(aId,aName,uName,uAgent,rClick,rMoney,uId,rDate,uuId)
+        values(#{aId},#{aName},#{uName},#{uAgent},#{rClick},#{rMoney},#{uId},#{rDate},#{uuId})
+        <!-- 这里sql结尾不能加分号，否则报“ORA-00911”的错误 -->
+    </insert>
+
+    <update id="editByRId" parameterType="com.wangzhe.model.Record">
+        update cc_record set aId=#{aId},rClick=#{rClick},uId=#{uId},rDate=#{rDate},rMoney=#{rMoney},aName=#{aName},uName=#{uName},uAgent=#{uAgent},uuId=#{uuId} where rId=#{rId}
+    </update>
+
+    <select id="getRecordByRId" resultType="com.wangzhe.model.Record" parameterType="java.lang.String">
+        select * from cc_record where rId=#{rId}
+    </select>
+
+
+    <select id="getRecordByAId" resultType="com.wangzhe.model.Record" parameterType="java.util.Map">
+        select * from cc_record where aId=#{aId} limit #{start},#{limit}
+    </select>
+
+    <select id="getRecordByAIdSize" resultType="int" parameterType="java.lang.String">
+        select count(*) from cc_record where aId=#{aId}
+    </select>
+
+    <select id="getRecordByUId" resultType="com.wangzhe.model.Record" parameterType="java.util.Map">
+        select * from cc_record where uId=#{uId} limit #{start},#{limit}
+    </select>
+
+
+    <select id="getRecordByUIdSize" parameterType="java.lang.String" resultType="int">
+        select count(*) from cc_record where uId=#{uId}
+    </select>
+    <select id="getRecordByAName" resultType="com.wangzhe.model.Record" parameterType="java.util.Map">
+        select * from cc_record where aName=#{aName}
+        limit #{start},#{limit}
+    </select>
+    <select id="getRecordByANameSize" resultType="int" parameterType="java.lang.String">
+        select count(*) from cc_record where aName=#{aName}
+    </select>
+
+    <select id="getRecordByAll" resultType="com.wangzhe.model.Record">
+        select * from cc_record limit #{start},#{limit}
+    </select>
+
+
+    <select id="getRecordByAllSize" resultType="int">
+        select count(*) from cc_record
+    </select>
+    <delete id="delRecord" parameterType="java.lang.String">
+        delete from cc_record where rId=#{rId}
+    </delete>
+
+    <select id="getRecordByRDate" resultType="com.wangzhe.model.Record" parameterType="java.util.Map">
+        select * from cc_record where (rDate BETWEEN #{rDate} AND #{tDate}) and uName=#{uName} limit #{start},#{limit}
+    </select>
+
+    <select id="getRecordByRDateSize" resultType="int" parameterType="java.util.Map">
+        select count(*) from cc_record where (rDate BETWEEN #{rDate} AND #{tDate}) and uName=#{uName}
+    </select>
+
+
+    <select id="getRecordByUAgents" resultType="com.wangzhe.model.Record" parameterType="java.util.Map">
+        select * from cc_record where (rDate BETWEEN #{rDate} AND #{tDate}) and uAgent=#{uAgents} limit
+        #{start},#{limit}
+    </select>
+
+    <select id="getRecordByUAgentsSize" resultType="int" parameterType="java.util.Map">
+        select count(*) from cc_record where (rDate BETWEEN #{rDate} AND #{tDate}) and uAgent=#{uAgents}
+    </select>
+
+</mapper>
