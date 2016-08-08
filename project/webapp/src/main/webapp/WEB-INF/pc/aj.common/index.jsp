@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>后台控制面板</title>
+        <title>后台控制</title>
         <meta http-equiv="Content-Type" content="text/html; charset=GBK">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css" type="text/css" media="screen" />
