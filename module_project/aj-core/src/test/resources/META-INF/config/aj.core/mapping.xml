@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.wangzhe.autojoin.core.common"
+	auto-import="false">
+
+
+	<class name="test" table="test">
+		<id name="id" type="java.lang.Long" column="ID" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="test" type="java.lang.String">
+			<column name="test" length="150" />
+		</property>
+	</class>
+	
+</hibernate-mapping>

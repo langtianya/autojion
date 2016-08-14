@@ -1,0 +1,26 @@
+//引入for-javase.gradle文件，就像引入插件一样
+apply from : '../for-javase.gradle'
+
+ext {
+    //指定本项目的资源（js,jsp,image,i18n等）输出到哪个webapp。
+	//rootProject.defaultRsOutputWebapp请看项目根目录的.gradle文件的定义
+	//rsOutputWebapp会在for-javase.gradle中用来定义.classpath的linkedResource
+    rsOutputWebapp = rootProject.defaultRsOutputWebapp
+}
+//归档名
+archivesBaseName = 'wz-' + project.name
+
+//给eclipse任务添加特有属性
+eclipse {
+    project {
+        name = project.name
+    }
+}
+
+//特有的依赖
+dependencies {
+    compile (
+    project(':module_project:aj-wangfw'),
+	  project(':module_project:aj-common')
+    )
+}
