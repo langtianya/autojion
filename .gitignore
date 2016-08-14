@@ -10,8 +10,7 @@ build/
 *.jar
 *.class
 *.log
-*.tpl
-g-*.bat
+
 
 /webapp/WEB-INF/pc/
 webapp/WEB-INF/mobile/
