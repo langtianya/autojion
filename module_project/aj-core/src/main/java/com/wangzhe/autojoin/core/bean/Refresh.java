@@ -1,4 +1,4 @@
-package com.wangzhe.autojoin.core.model;
+package com.wangzhe.autojoin.core.bean;
 
 import java.sql.Timestamp;
 

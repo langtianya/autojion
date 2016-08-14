@@ -2,11 +2,14 @@
 //项目名
 rootProject.name = 'autojoin'
 //定义项目根目录为项目文件夹下的project文件夹
-def rootDir = file(rootProject.projectDir.absolutePath + '/project')
+def rootDir = file(rootProject.projectDir.absolutePath + '/module_project')
 
 rootDir.eachDir { dir ->
 //在project目录下除了样例项目以外的模块全部包含到本项目中
     if (!dir.name.endsWith('-sample')) {
-        include 'project:' + dir.name
-    }
+	   println '==========include:'+dir.name
+        include 'module_project:' + dir.name
+    }else{
+	 println '==========not include:'+dir.name
+	}
 }

@@ -1,41 +1,28 @@
 package com.wangzhe.autojoin.core.action;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.GZIPOutputStream;
-
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.InterceptorRef;
-import org.apache.struts2.convention.annotation.InterceptorRefs;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.MD5;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.Util;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.db.DB;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Auditor;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Refresh;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.RefreshMapper;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Status;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Task;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.UserMapper;
-import com.opensymphony.xwork2.ActionSupport;
+import com.wangzhe.autojoin.core.bean.Refresh;
+import com.wangzhe.autojoin.core.bean.RefreshMapper;
+import com.wangzhe.autojoin.wangfw.action.BaseAction;
+import com.wangzhe.autojoin.wangfw.bean.Auditor;
+import com.wangzhe.autojoin.wangfw.bean.Status;
+import com.wangzhe.autojoin.wangfw.bean.Task;
+import com.wangzhe.autojoin.wangfw.db.DB;
+import com.wangzhe.autojoin.wangfw.util.MD5;
+import com.wangzhe.autojoin.wangfw.util.Util;
 /**
  * Refresh: Administrator
  * Date: 13-2-28

@@ -1,5 +1,4 @@
 package com.wangzhe.autojoin.core.action;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,26 +19,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.MD5;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.common.Util;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.db.DB;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Account;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.AccountMapper;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Auditor;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Refresh;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.RefreshMapper;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Status;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.Task;
-import com.wangzhe.autojoin.common.autojoin.core.autojoin.wangfw.model.TaskMapper;
-import com.opensymphony.xwork2.ActionSupport;
+import com.wangzhe.autojoin.core.bean.TaskMapper;
+import com.wangzhe.autojoin.wangfw.action.AccountAction;
+import com.wangzhe.autojoin.wangfw.action.BaseAction;
+import com.wangzhe.autojoin.wangfw.bean.Account;
+import com.wangzhe.autojoin.wangfw.bean.AccountMapper;
+import com.wangzhe.autojoin.wangfw.bean.Auditor;
+import com.wangzhe.autojoin.wangfw.bean.Status;
+import com.wangzhe.autojoin.wangfw.bean.Task;
+import com.wangzhe.autojoin.wangfw.util.MD5;
+import com.wangzhe.autojoin.wangfw.util.Util;
 /**
  * Task: Administrator Date: 13-2-28 Time: ����5:39
  */
@@ -109,7 +103,7 @@ public class TaskAction  extends BaseAction{
 	        boolean flag=false;
 	        if(tSEType!=null)
 	        {
-	        for(String type:InterfaceAction.TYPES)
+	       /* for(String type:InterfaceAction.TYPES)
 	        {
 	        	if(tSEType.equals(type))
 	        	{
@@ -117,7 +111,7 @@ public class TaskAction  extends BaseAction{
 	        		break;
 	        	}
 	        	
-	        }        
+	        }  */      
 	        }
 	        if(tKeyword==null||tUrl==null||aId==null||tSEType==null||tSetClick==null||!flag)
 	        {
@@ -191,7 +185,7 @@ public class TaskAction  extends BaseAction{
             if(task!=null)
             {           
             	task.setTHaveClick(task.getTSetClick());
-                InterfaceAction.addTaskToPool(task);             
+//                InterfaceAction.addTaskToPool(task);             
             }
             else
             {
@@ -313,7 +307,7 @@ public class TaskAction  extends BaseAction{
 			task.setTUrl((String)taskMap.get("tUrl"));
 			task.setTSEType((String)taskMap.get("tSEType"));
 			task.setAId((String)taskMap.get("aId"));
-			InterfaceAction.delTaskFromPool(task);
+//			InterfaceAction.delTaskFromPool(task);
 		}
 		
 		 /**
@@ -427,10 +421,10 @@ public class TaskAction  extends BaseAction{
         } finally {
         	closeSqlSession();
         }
-        InterfaceAction.updateTaskpools(task);
+//        InterfaceAction.updateTaskpools(task);
         String msg="���³ɹ�";
         Util.writeDataToClient(msg);
-        InterfaceAction.updateTaskToPool(task);
+//        InterfaceAction.updateTaskToPool(task);
 		return "success";
 		}
 
@@ -471,10 +465,10 @@ public class TaskAction  extends BaseAction{
 				
 					task = taskMapper.queryByTask(parasMap);
 					if (task != null) {
-						List refreshs=new RefreshAction().queryRefreshsByTask(task);
-						if(refreshs!=null){
-							refreshMap.put(records[i][0], refreshs);
-						}
+//						List refreshs=new RefreshAction().queryRefreshsByTask(task);
+//						if(refreshs!=null){
+//							refreshMap.put(records[i][0], refreshs);
+//						}
 
 					}
 			}

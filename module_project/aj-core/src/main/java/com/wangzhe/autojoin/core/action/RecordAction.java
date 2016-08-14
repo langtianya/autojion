@@ -6,11 +6,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.ws.Action;
+import javax.servlet.http.HttpServletRequest;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+
+import com.opensymphony.xwork2.ActionSupport;
 import com.wangzhe.autojoin.core.bean.Record;
 import com.wangzhe.autojoin.core.bean.RecordMapper;
+import com.wangzhe.autojoin.wangfw.bean.Account;
+import com.wangzhe.autojoin.wangfw.bean.AccountMapper;
+import com.wangzhe.autojoin.wangfw.bean.User;
+import com.wangzhe.autojoin.wangfw.bean.UserMapper;
+import com.wangzhe.autojoin.wangfw.db.DB;
+import com.wangzhe.autojoin.wangfw.util.BeanFunction;
+import com.wangzhe.autojoin.wangfw.util.StringUtils;
 
 /**
  * User: Administrator

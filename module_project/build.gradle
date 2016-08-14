@@ -12,7 +12,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
     
-    version = rootProject.novatarTargetVersionWithDt
+    version = rootProject.dtVersion
 	
      // java编译的时候缺省状态下会因为中文字符而失败
     [compileJava, javadoc, compileTestJava]*.options*.encoding = 'UTF-8'
@@ -57,6 +57,7 @@ subprojects {
   }
 }
 
+//用 Gradle 任务来初始化工程目录
 //创建项目目录
 task createProDirs << {
    sourceSets*.java.srcDirs*.each { it.mkdirs() }

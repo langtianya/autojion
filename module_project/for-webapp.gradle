@@ -114,9 +114,10 @@ clean.dependsOn cleanWebapp
 
 //配置jetty在eclipse的运行文件
 task jettyLaunchForEclipse << {
+println "=========projectDir:"+rootProject.projectDir
 
    //读取项目根目录的config文件下的jetty运行配置文件，这时xml形式的配置文件
-    Node xml = new XmlParser().parse(new File(rootProject.projectDir+'/config', "jetty-sup-webapp.launch.tpl"))
+    Node xml = new XmlParser().parse(new File(rootProject.projectDir, "config\\jetty-sup-webapp.launch.tpl"))
 	//删除当项目目录下的运行文件
     def launchFile = new File ( projectDir, project.name + "-run.launch" )
     if (launchFile.exists()) {
@@ -138,7 +139,7 @@ task jettyLaunchForEclipse << {
     
 	//设置classEntry
     def classEntry = xml.listAttribute[0].listEntry
-    classEntry[0].attributes()['value'] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> <runtimeClasspathEntry containerPath=\""+rootProject.eclipseJreContainer+"\" for-javase=\""+eclipse.project.name+"\" path=\"1\" type=\"4\"/>"
+    classEntry[0].attributes()['value'] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> <runtimeClasspathEntry containerPath=\""+rootProject.eclipse_jreContainer+"\" for-javase=\""+eclipse.project.name+"\" path=\"1\" type=\"4\"/>"
     classEntry[1].attributes()['value'] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> <runtimeClasspathEntry id=\"org.eclipse.jdt.launching.classpathentry.defaultClasspath\"> <memento exportedEntriesOnly=\"false\" project=\""+eclipse.project.name+"\"/></runtimeClasspathEntry>"
     classEntry[2].attributes()['value'] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> <runtimeClasspathEntry internalArchive=\"/"+eclipse.project.name+"/src/main/jetty/deploy/resources\" path=\"3\" type=\"2\"/>"
     classEntry[3].attributes()['value'] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> <runtimeClasspathEntry internalArchive=\"/"+eclipse.project.name+"/src/main/jetty/resources\" path=\"3\" type=\"2\"/>"
@@ -168,8 +169,8 @@ task createWebappXml {
 
     //替换本web项目中webapp-sample.xml文件中的归档名
     def webappFile = new File(projectDir, "src/main/jetty/etc/webapp-sample.xml")
-	//读取目标webappFile
-    def destWebappFile = new File(projectDir, "src/main/jetty/deploy/webapps/" + war.archiveName[0..-4] + "xml");
+	//读取目标webappFile,例如aj-webapp-1.0.xml
+    def destWebappFile = new File(projectDir, "src/main/jetty/deploy/webapps/" + war.archiveName[1..-4] + "xml");
 	
 	//定义扩展属性
     ext.destWebappFile = destWebappFile
@@ -178,7 +179,7 @@ task createWebappXml {
 		destWebappFile.withWriter("UTF-8") { Writer writer ->
 			webappFile.withReader("UTF-8") { Reader reader ->
 			//读取行
-				reader.tranwzormLine(writer) { String line ->
+				reader.transformLine(writer) { String line ->
 				//替换遍历
 					line.replaceAll('@warArchiveName@', war.archiveName)
 				}

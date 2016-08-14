@@ -45,7 +45,7 @@ task javadocZip(type: Jar, dependsOn: javadoc) {
     from tasks["javadoc"]
     destinationDir = rootProject.buildDistDir
 }
-/仅仅在项目中存在generateJavadoc并且值为true才生成javadoc
+//仅仅在项目中存在generateJavadoc并且值为true才生成javadoc
 javadocZip.onlyIf { project.hasProperty('generateJavadoc') && project.property('generateJavadoc') == 'true'}
 
 //生成eclipse项目文件
@@ -59,7 +59,7 @@ eclipse {
 //在每个项目的.classpath文件
    classpath {
        defaultOutputDir = file(buildDir.name + "/classes/main")
-	   查找.classpath文件，把指定源文件的编译文件输出到指定目录
+	   //查找.classpath文件，把指定源文件的编译文件输出到指定目录
        file {
           withXml {
 		  //遍历所有节点

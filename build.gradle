@@ -14,7 +14,7 @@ ext {
     jetty_home = System.getenv("JETTY_HOME")
 
     //定义模块项目目录文件，即项目根目录中的module_project文件夹
-    def module_project_dir = file(rootProject.projectDir.absolutePath + 'module_project')
+    def module_project_dir = file(rootProject.projectDir.absolutePath + '/module_project')
 	
 	//定义list，存放web项目dir
     def webProjDirs = new ArrayList();
@@ -32,10 +32,10 @@ ext {
 	
     //把java工程包含的jsp、css、script、image等资源，复制到webProjDirs中第一个web项目，
     //多web项目的话，需要另外一一设置
-    defaultResourceOutputWebappProject = ":module_project:" + webProjDirs.get(0).name
+    defaultRsOutputWebapp = ":module_project:" + webProjDirs.get(0).name
 	
     //打包时间
-    packDate = new Date().format('yyyyMMdd HH:mm:ss')
+    packDate = new Date().format('yyyy_MM_dd HH_mm')
     dtVersion = sysVersion + "." + packDate
 
     buildDistDir = file(buildDir.absolutePath + "/dist")
