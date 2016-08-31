@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>aj-wangfw</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>mobile</name>
+			<type>2</type>
+			<location>D:/programming/project/autojion/module_project/aj-webapp/src/main/webapp/mobile</location>
+		</link>
+		<link>
+			<name>pc</name>
+			<type>2</type>
+			<location>D:/programming/project/autojion/module_project/aj-webapp/src/main/webapp/pc</location>
+		</link>
+	</linkedResources>
+</projectDescription>
