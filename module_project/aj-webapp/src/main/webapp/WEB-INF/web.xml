@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  
+   <!-- 应用程序显示名 -->
+    <display-name>autojoin/display-name>
+    
+      <!-- 欢迎 页面-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    
+    
+    <!-- 错误页面 -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error/403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.jsp</location>
+    </error-page>
+    
+
+     <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:application-context.xml
+        </param-value>
+    </context-param>
+    
+     <servlet>
+        <servlet-name>spring-mvc-entry</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:servlet-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>spring-mvc-entry</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    
+   <!-- Struts2核心拦截器 -->
+    <filter>
+        <description>Struts2核心拦截器</description>
+        <filter-name>struts2</filter-name>
+        <filter-class>
+            org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+</web-app>

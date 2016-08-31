@@ -3,9 +3,9 @@
   <head>
   </head>
   <body>
-    <h1>FOO Example</h1>
+    <h1>JSTL Example</h1>
     <hr>
-    <p>A trivial FOO example
+    <p>A trivial jstl example
     <hr>
     <c:forEach var="i" begin="1" end="10" step="1">
       <c:out value="${i}" />
